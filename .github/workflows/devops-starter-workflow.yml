@@ -35,8 +35,11 @@ jobs:
       continue-on-error: false
       run: |
         mkdir testresults
-        pip install pytest  && pip install pytest-cov && pytest --cov=./ --cov-config=.coveragerc --cov-report term-missing Tests/unit_tests --junitxml=./
-        s/test-results.xml && pip install pycmd && py.cleanup Tests/
+        pip install pytest  &&
+        pip install pytest-cov && 
+        pytest --cov=./ --cov-config=.coveragerc --cov-report term-missing Tests/unit_tests --junitxml=./testresults/test-results.xml && 
+        pip install pycmd && 
+        py.cleanup Tests/
     
     - uses: actions/checkout@v2
       with:
